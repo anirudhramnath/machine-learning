@@ -3,11 +3,13 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+
 def pad_ones(X, size):
 	ones = np.ones((size, 1))
 	X = np.concatenate((ones, X), axis=1)
 
 	return X
+
 
 def gradient_descent(X, y):
 	m = y.size
@@ -41,8 +43,6 @@ def compute_cost(X, y, theta):
 
 	return J
 
-def predict(X, theta):
-	return X * theta
 
 def load_data():
 	data = np.loadtxt('univariate_regression_data.txt', delimiter=',')
