@@ -15,7 +15,7 @@ def gradient_descent(X, y):
 	m = y.size
 	X = pad_ones(X, m)
 
-	# init theta_0 and theta_1 to 0 
+	# init theta_0 and theta_1 to 0
 	theta = np.zeros((2, 1))
 	iterations = 1500
 	alpha = .01
@@ -31,14 +31,13 @@ def gradient_descent(X, y):
 		J_history[i][0] = compute_cost(X, y, theta)
 
 	return theta, J_history
-	
 
 def compute_cost(X, y, theta):
 	J, m = 0, y.size
 
 	# Dot product of X and theta
 	predictions = np.dot(X, theta)
-	squared_error = (predictions - y) **2	
+	squared_error = (predictions - y) **2
 	J = np.sum(squared_error) / (2*m)
 
 	return J
@@ -51,12 +50,12 @@ def load_data():
 	X, y = data[:,0][:,np.newaxis], data[:,1][:,np.newaxis]
 
 	theta, J_histroy = gradient_descent(X, y)
-	
+
 	predict = lambda M, theta: pad_ones(M, M.size).dot(theta)
-	
+
 	plt.scatter(X, y, color='orange', label='data points')
 	plt.plot()
-	
+
 	plt.xlabel('Population of City in 10,000s')
 	plt.ylabel('Profit in 10,000s')
 
@@ -67,13 +66,13 @@ def load_data():
 	plt.show()
 
 	X = np.arange(1500)
-	
+
 	plt.plot(X, J_histroy.flatten(), color='red', label='cost function')
 	plt.legend()
 	plt.show()
 
-	print 'Results:\ntheta_0 = %.2f, theta_1 = %.2f' % (theta[0,0], theta[1,0]) 
-	
+	print 'Results:\ntheta_0 = %.2f, theta_1 = %.2f' % (theta[0,0], theta[1,0])
+
 
 if __name__ == '__main__':
 	load_data()
